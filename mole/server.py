@@ -30,7 +30,6 @@ class BjoernServer(ServerAdapter):
         run(handler, self.host, self.port)
 
 class UVWebServer(ServerAdapter):
-    """ Screamingly fast server written in C: https://github.com/jonashaag/bjoern """
     def run(self, handler):
         from uvweb import run
         run(handler, self.host, self.port)

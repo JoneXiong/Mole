@@ -107,7 +107,7 @@ class Router(object):
         ''' Return a (target, url_agrs) tuple or raise HTTPError(404/405). '''
         targets, urlargs = self._match_path(environ)
         if not targets:
-            raise HTTPError(404, "Not found: " + environ['PATH_INFO'])
+            raise HTTPError(404, "Not found: " + environ.get('PATH_INFO',''))
         environ['router.url_args'] = urlargs
         method = environ['REQUEST_METHOD'].upper()
         if method in targets:
