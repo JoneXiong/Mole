@@ -51,6 +51,7 @@ class FlupFCGIServer(ServerAdapter):
 
 class WSGIRefServer(ServerAdapter):
     def run(self, handler): # pragma: no cover
+        __import__('BaseHTTPServer').BaseHTTPRequestHandler.address_string = lambda x:x.client_address[0]
         from wsgiref.simple_server import make_server, WSGIRequestHandler
         if self.quiet:
             class QuietHandler(WSGIRequestHandler):
