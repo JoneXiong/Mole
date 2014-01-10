@@ -37,6 +37,8 @@ class MultiDict(DictMixin):
             for value in values:
                 yield key, value
                 
+    def has_key(self, key):
+            return key in self.dict
                 
 class DictProperty(object):
     ''' Property that maps to a key in a local dict-like attribute. '''
