@@ -10,6 +10,7 @@ import pickle
 import os
 import threading
 import time
+from mole import request
 
 
 # Configurable cookie options
