@@ -16,7 +16,7 @@ import time
 COOKIE_NAME_PREFIX = "MoS"  # identifies a cookie as being one used by mole-sessions (so you can set cookies too)
 COOKIE_PATH = "/"
 DEFAULT_COOKIE_ONLY_THRESH = 4096  # most *nix paging size is 4096. There is no limit in header size in HTTP spec, it is nontheless limited by system's page size
-# 默认30分钟session过期
+# 默认8小时session过期
 DEFAULT_LIFETIME = datetime.timedelta(seconds=60*60*8)#datetime.timedelta(days=7)
 
 #SessionModel 记录置为无效的标志
