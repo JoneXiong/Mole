@@ -166,15 +166,11 @@ class Session(object):
     def make_cookie_headers(self):
         """Returns a list of cookie headers to send"""
         if not self.sid:
-            m_log  = 'session: have no sid, so expore it'
-            print m_log
-            logging.info(m_log)
+            logging.info('session: have no sid, so expore it')
             return [EXPIRE_COOKIE_FMT % k for k in self.cookie_keys]
 
         if self.cookie_data is None:
-            m_log = 'no cookie headers need to be sent'
-            print m_log
-            logging.info(m_log)
+            logging.info('no cookie headers need to be sent')
             return []
 
         if self.is_ssl_only():
@@ -541,9 +537,6 @@ class SessionMiddleware(object):
         # create a hook for us to insert a cookie into the response headers
         def mole_session_start_response(status, headers, exc_info=None):
             _tls.current_session.save()
-            m_log  = 'session: to Set-Cookie %s'%str( _tls.current_session.make_cookie_headers() )
-            print m_log
-            logging.info(m_log)
             for ch in _tls.current_session.make_cookie_headers():
                 headers.append(('Set-Cookie', ch))
             return start_response(status, headers, exc_info)
